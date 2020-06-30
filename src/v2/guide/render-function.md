@@ -456,6 +456,18 @@ render: function (createElement) {
 }
 ```
 
+To use already defined slot and named slots, create content for them as child VNodes and set `slot` field to define to which slot the conent will be assigned
+
+```
+render: function (createElement) {
+  // `<my-component><h1>Default slot</h1><template v-slot:header>Header slot</template>`
+  return createElement(MyComponent, [
+    createElement('h1', { slot: 'default' }, 'Default slot'),
+    createElement('template', { slot: 'header' }, 'Header slot')
+  ])
+}
+```
+
 ## JSX
 
 If you're writing a lot of `render` functions, it might feel painful to write something like this:
